@@ -8,6 +8,7 @@ public class User {
     private String lastName;
     private String email;
     private Date registrationDate;
+    int i;
 
     User(int userId, String name, String lastName, String email, Date registrationDate){
         this.userId = userId;
