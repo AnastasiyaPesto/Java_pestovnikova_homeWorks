@@ -25,6 +25,35 @@ public class User {
         this.registrationDate = registrationDate;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+
+        if (!(obj instanceof User)){
+            return false;
+        }
+
+        User other = (User)obj;
+        return (userId == other.userId)
+                && (name.equals(other.name)
+                && lastName.equals(other.lastName))
+                && email.equals(other.email)
+                && registrationDate.equals(other.registrationDate);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 31 * result + name.hashCode();
+        result = 31 * result + lastName.hashCode();
+        result = 31 * result + email.hashCode();
+        result = 31 * result + registrationDate.hashCode();
+
+        return result;
+    }
+
     public int getUserId(){
         return this.userId;
     }

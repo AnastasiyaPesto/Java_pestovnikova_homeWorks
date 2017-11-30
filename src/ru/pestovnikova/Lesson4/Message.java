@@ -21,6 +21,30 @@ public class Message {
         this.data = data;
     }
 
+    public boolean equals(Object obj){
+        if (this == obj) return true;
+
+        if (!(obj instanceof Message)){
+            return false;
+        }
+
+        Message other = (Message)obj;
+        return (messageId == other.messageId)
+                && (text.equals(other.text)
+                && author.equals(other.author)) && data.equals(other.data);
+    }
+
+    public int hashCode(Object obj){
+        int result = 17;
+
+        result = 31 * result + messageId;
+        result = 31 * result + text.hashCode();
+        result = 31 * result + author.hashCode();
+        result = 31 * result + data.hashCode();
+
+        return result;
+    }
+
     public int getMessageId() {
         return messageId;
     }

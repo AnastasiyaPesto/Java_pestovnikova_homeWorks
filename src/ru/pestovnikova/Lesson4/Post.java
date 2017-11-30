@@ -14,6 +14,29 @@ public class Post {
         this.postedAt = postedAt;
     }
 
+    public boolean equals(Object obj){
+        if (this == obj) return true;
+
+        if (!(obj instanceof Post)){
+            return false;
+        }
+
+        Post other = (Post) obj;
+        return (postId == other.postId)
+                && (title.equals(other.title)
+                && postedAt.equals(other.postedAt));
+    }
+
+    public int hashCode(){
+        int result = 17;
+
+        result = 31 * result + postId;
+        result = 31 * result + title.hashCode();
+        result = 31 * result + postedAt.hashCode();
+
+        return result;
+    }
+
     public int getPostId() {
         return postId;
     }
