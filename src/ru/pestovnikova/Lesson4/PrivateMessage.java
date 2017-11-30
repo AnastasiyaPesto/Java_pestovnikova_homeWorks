@@ -14,6 +14,20 @@ public class PrivateMessage extends Message {
         this.user = user;
     }
 
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof PrivateMessage)) return false;
+
+        PrivateMessage other = (PrivateMessage) obj;
+        return user.equals(other.user);
+    }
+
+    public int hashCode(){
+        int result = 17;
+        result = 31 * result + user.hashCode();
+        return result;
+    }
+
     public User getUser(){
         return user;
     }
