@@ -8,7 +8,14 @@ public class User {
     private String lastName;
     private String email;
     private Date registrationDate;
-    int i;
+
+    User(){
+        userId = 0;
+        name = "";
+        lastName = "";
+        email = "";
+        registrationDate = new Date();
+    }
 
     User(int userId, String name, String lastName, String email, Date registrationDate){
         this.userId = userId;
