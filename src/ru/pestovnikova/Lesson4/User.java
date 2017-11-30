@@ -8,6 +8,7 @@ public class User {
     private String lastName;
     private String email;
     private Date registrationDate;
+    int i;
 
     User(int userId, String name, String lastName, String email, Date registrationDate){
         this.userId = userId;
@@ -15,14 +16,6 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.registrationDate = registrationDate;
-    }
-
-    User(){
-        userId = 0;
-        name = "";
-        lastName = "";
-        email = "";
-        registrationDate = new Date();
     }
 
     public int getUserId(){
