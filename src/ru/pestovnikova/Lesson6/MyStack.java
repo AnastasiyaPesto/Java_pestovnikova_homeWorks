@@ -14,27 +14,31 @@ public class MyStack implements CustomDataStructure {
 
     @Override
     public boolean push(int value) {
-
-        if(realSize == cap){
-            int[] oldStackArray = stackArray;
-            cap = (int)(stackArray.length * 1.5);
+        if (realSize == 0){
+            stackArray[realSize++] = value;
+        } else{
+            int[] oldQueue = stackArray;
+            if(realSize == cap) {
+                cap = (int) (stackArray.length * 1.5);
+            }
             stackArray = new int[cap];
-            System.arraycopy(oldStackArray, 0, stackArray, 0, oldStackArray.length);
+            stackArray[0] = value;
+            System.arraycopy(oldQueue, 0, stackArray, 1, realSize);
+            realSize++;
         }
-
-        stackArray[realSize++] = value;
         return true;
     }
 
     @Override
     public int pop() {
-        int retElem = 0;
-        if (realSize > 0) {
-            retElem = stackArray[realSize - 1];
-            stackArray[realSize - 1] = 0;
+        int returnElem = 0;
+        if(realSize > 0){
+            returnElem = stackArray[0];
             realSize--;
+            System.arraycopy(stackArray, 1, stackArray, 0, realSize);
+            stackArray[realSize] = 0;
         }
-        return retElem;
+        return returnElem;
     }
 
 
