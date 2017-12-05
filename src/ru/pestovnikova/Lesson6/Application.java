@@ -11,11 +11,10 @@ public class Application {
         exStack.push(7);
         exStack.push(8);
 
-        exStack.pop();
-        exStack.pop();
-        exStack.pop();
+        int topStack =  exStack.pop();
+        topStack = exStack.pop();
+        topStack = exStack.pop();
 
-        int topStack = exStack.top();
         int len = exStack.getArrayLength();
         exStack.pop();
         exStack.pop();

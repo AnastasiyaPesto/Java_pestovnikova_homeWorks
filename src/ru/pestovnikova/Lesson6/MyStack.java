@@ -10,44 +10,37 @@ public class MyStack implements CustomDataStructure {
         stackArray = new int[cap];
         this.cap = cap;
         this.realSize = 0;
-        this.head = -1;
     }
 
     @Override
     public boolean push(int value) {
 
-        if(head == cap - 1){
+        if(realSize == cap){
             int[] oldStackArray = stackArray;
             cap = (int)(stackArray.length * 1.5);
             stackArray = new int[cap];
             System.arraycopy(oldStackArray, 0, stackArray, 0, oldStackArray.length);
         }
 
-        stackArray[++head] = value;
-        realSize++;
+        stackArray[realSize++] = value;
         return true;
     }
 
     @Override
-    public boolean pop() {
-        if (head >= 0) {
-            stackArray[head--] = 0;
+    public int pop() {
+        int retElem = 0;
+        if (realSize > 0) {
+            retElem = stackArray[realSize - 1];
+            stackArray[realSize - 1] = 0;
             realSize--;
-            return true;
         }
-        return false;
+        return retElem;
     }
 
-    @Override
-    public int top() {
-        return stackArray[head];
-    }
 
     @Override
     public boolean isEmpty() {
-        if (realSize == 0) return true;
-
-        return false;
+        return realSize == 0;
     }
 
     @Override
