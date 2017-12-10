@@ -11,4 +11,7 @@ public class ListElement<T> {
             this.value = value;
         }
 
+    public T getValue() {
+        return value;
+    }
 }

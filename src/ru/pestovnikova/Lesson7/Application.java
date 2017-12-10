@@ -5,6 +5,11 @@ public class Application {
         DataStructure<Integer> linkedList = new DoublyLinkedListImp<Integer>();
         linkedList.add(3);
         linkedList.add(7);
+        linkedList.add(15);
+        linkedList.add(-8);
+        Integer[] ar = new Integer[linkedList.getSize()];
+        ar = linkedList.toArray();
+        int i = 0;
     }
 
 }

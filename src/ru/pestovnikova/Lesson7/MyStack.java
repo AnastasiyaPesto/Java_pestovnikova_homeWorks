@@ -1,6 +1,8 @@
 package ru.pestovnikova.Lesson7;
 
-public interface MyStack<T> extends DataStructure<T> {
+import java.util.Collection;
+
+public interface MyStack<T> extends Collection<T> {
     boolean push(T value);
     T pop();
 }
