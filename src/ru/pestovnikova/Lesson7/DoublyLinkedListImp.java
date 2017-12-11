@@ -1,7 +1,6 @@
 package ru.pestovnikova.Lesson7;
 
 public class DoublyLinkedListImp<T> implements DataStructure<T> {
-    private T[] arrayDoublyLinkedList;
     private ListElement head;
     private int size;
 
@@ -10,6 +9,7 @@ public class DoublyLinkedListImp<T> implements DataStructure<T> {
         ListElement<T> element = new ListElement(value);
         if (head == null){
             head = element;
+            size++;
         } else{
             ListElement<T> current = head;
             while(current.next != null){
@@ -23,11 +23,9 @@ public class DoublyLinkedListImp<T> implements DataStructure<T> {
     }
 
     @Override
-    public T remove(int index) {
-        T retVal;
+    public void remove(int index) {
         if (index == 0){
             head = head.next;
-            retVal = null;
         }else{
             int curIndex = 0;
             ListElement<T> current = head;
@@ -37,9 +35,7 @@ public class DoublyLinkedListImp<T> implements DataStructure<T> {
             }
             current.previous.next = current.next;
             size--;
-            retVal = current.getValue();
         }
-        return retVal;
     }
 
     @Override
@@ -53,12 +49,11 @@ public class DoublyLinkedListImp<T> implements DataStructure<T> {
     }
 
     @Override
-    // Н Е  Р А Б О Т А Е Т
     public T[] toArray() {
-        arrayDoublyLinkedList = (T[])(new Object[size]);
+        T[] arrayDoublyLinkedList = (T[])(new Object[size]);
         ListElement<T> current = head;
         int index = 0;
-        while(current.next != null){
+        while(current != null){
             arrayDoublyLinkedList[index] = current.value;
             current = current.next;
             index++;
