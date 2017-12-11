@@ -67,6 +67,14 @@ public class MyQueue<T> implements MyCollection {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        T[] arrayDoublyLinkedList = (T[])(new Object[realSize]);
+        QueueElement current = head;
+        int index = 0;
+        while(current != null){
+            arrayDoublyLinkedList[index] = current.value;
+            current = current.next;
+            index++;
+        }
+        return arrayDoublyLinkedList;
     }
 }
