@@ -21,6 +21,7 @@ public class MyQueue<T> implements MyCollection {
         this.realSize = 0;
     }
 
+    // push
     // enqueue - положить в очередь
     public boolean enqueue(T value) {
         QueueElement elemQueue = new QueueElement(value);
@@ -38,6 +39,7 @@ public class MyQueue<T> implements MyCollection {
         return true;
     }
 
+    // pop()
     public T dequeue() {
         T retVal = null;
         if(realSize == 0){
@@ -67,14 +69,14 @@ public class MyQueue<T> implements MyCollection {
 
     @Override
     public Object[] toArray() {
-        T[] arrayDoublyLinkedList = (T[])(new Object[realSize]);
+        T[] array = (T[])(new Object[realSize]);
         QueueElement current = head;
         int index = 0;
         while(current != null){
-            arrayDoublyLinkedList[index] = current.value;
+            array[index] = current.value;
             current = current.next;
             index++;
         }
-        return arrayDoublyLinkedList;
+        return array;
     }
 }
