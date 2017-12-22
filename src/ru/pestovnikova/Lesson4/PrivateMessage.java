@@ -24,8 +24,7 @@ public class PrivateMessage extends Message {
 
     public int hashCode(){
         int result = 17;
-        result = 31 * result + user.hashCode();
-        return result;
+        return (31 * result + user.hashCode());
     }
 
     public User getUser(){

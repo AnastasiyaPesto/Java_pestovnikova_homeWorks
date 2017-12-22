@@ -20,13 +20,11 @@ public class MyStack<T> implements MyCollection {
         StackElement elemStack = new StackElement(value);
         if(head == null){
             head = elemStack;
-            head.next = null;
-            realSize++;
         } else {
             elemStack.next = head;
             head = elemStack;
-            realSize++;
         }
+        realSize++;
         return true;
     }
 
