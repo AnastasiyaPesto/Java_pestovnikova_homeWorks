@@ -58,8 +58,14 @@ public class ListArray {
     }
 
     public boolean isEmpty(){
+<<<<<<< HEAD
         return (size == 0);
 
+=======
+        if (size == 0) return true;
+
+        return false;
+>>>>>>> a006b95a9293092a9f63bd265e19a18fb5dac92b
     }
 
 }
