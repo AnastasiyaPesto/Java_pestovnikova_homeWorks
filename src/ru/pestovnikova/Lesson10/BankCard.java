@@ -7,6 +7,7 @@ public class BankCard
     private long cardNumber;
     private short codeCVV;
     private float balance;
+    // TODO-me добавить "до какой даты действительна"
 
     public BankCard(String name, String surname, long cardNumber, short codeCVV, float balance) {
         this.name = name;
@@ -37,7 +38,27 @@ public class BankCard
         return surname;
     }
 
+
+    public long getCardNumber() {
+        return cardNumber;
+    }
+
+    public short getCodeCVV() {
+        return codeCVV;
+    }
+
     public float getBalance() {
         return balance;
+    }
+
+    @Override
+    public String toString() {
+        return "BankCard{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", cardNumber=" + cardNumber +
+                ", codeCVV=" + codeCVV +
+                ", balance=" + balance +
+                '}';
     }
 }
