@@ -1,9 +1,10 @@
 package ru.pestovnikova.Lesson10;
 
 public enum TypesUsers {
-    AnyUser(0),
-    Manager(1),
-    Admin(2);
+    NOSET(0),
+    ANYUSER(1),
+    MANAGER(2),
+    ADMIN(3);
 
     private int userID;
 
@@ -13,3 +14,5 @@ public enum TypesUsers {
 
     public int getUserID(){return this.userID;}
 }
+
+
