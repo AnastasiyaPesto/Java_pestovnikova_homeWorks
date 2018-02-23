@@ -2,6 +2,7 @@ package ru.pestovnikova.Lesson10;
 
 public class BankCard
 {
+    private int ID;
     private String name;
     private String surname;
     private long cardNumber;
@@ -9,7 +10,8 @@ public class BankCard
     private float balance;
     // TODO-me добавить "до какой даты действительна"
 
-    public BankCard(String name, String surname, long cardNumber, short codeCVV, float balance) {
+    public BankCard(int id, String name, String surname, long cardNumber, short codeCVV, float balance) {
+        this.ID = id;
         this.name = name;
         this.surname = surname;
         this.cardNumber = cardNumber;
@@ -18,6 +20,7 @@ public class BankCard
     }
 
     public BankCard() {
+        this.ID = 0;
         this.name = "";
         this.surname = "";
         this.cardNumber = 0;
@@ -57,6 +60,14 @@ public class BankCard
 
     public float getBalance() {
         return balance;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int id) {
+        this.ID = id;
     }
 
     @Override

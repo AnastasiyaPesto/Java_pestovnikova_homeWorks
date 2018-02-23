@@ -9,10 +9,13 @@ public class AnyUser extends User {
     private int ID;
     private BankCard bankCard;
 
+    // TODO-me
+    // Это нормальный конструктор??????????
     public AnyUser(String name, String surname, int age, TypesUsers viewUser) {
         super(name, surname, age, viewUser);
         ID = new Random().nextInt();
         bankCard = new BankCard();
+        bankCard.setID(ID);
     }
 
     public AnyUser() { super(); }
