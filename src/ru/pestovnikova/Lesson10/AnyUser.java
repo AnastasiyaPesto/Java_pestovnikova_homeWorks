@@ -2,15 +2,24 @@ package ru.pestovnikova.Lesson10;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class AnyUser extends User {
     private ArrayList<BankCard> bankCardsList;
+    private int ID;
+    private BankCard bankCard;
 
     public AnyUser(String name, String surname, int age, TypesUsers viewUser) {
         super(name, surname, age, viewUser);
+        ID = new Random().nextInt();
+        bankCard = new BankCard();
     }
 
     public AnyUser() { super(); }
+
+    public int getID() {
+        return ID;
+    }
 
     // TODO-me как обработать если bankCard == null ?
     public void add(BankCard bankCard) throws IOException {

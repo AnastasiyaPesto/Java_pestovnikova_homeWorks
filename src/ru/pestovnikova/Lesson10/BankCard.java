@@ -17,6 +17,14 @@ public class BankCard
         this.balance = balance;
     }
 
+    public BankCard() {
+        this.name = "";
+        this.surname = "";
+        this.cardNumber = 0;
+        this.codeCVV = 0;
+        this.balance = 0;
+    }
+
     public void setCardNumber(long cardNumber) {
         this.cardNumber = cardNumber;
     }

@@ -16,8 +16,8 @@ public class User {
     // TODO-me
     // Access can be package-private ??????
     public User() {
-        this.name = null;
-        this.surname = null;
+        this.name = "";
+        this.surname = "";
         this.age = 0;
         this.viewUser = TypesUsers.NOSET;
     }
