@@ -5,6 +5,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Administrator extends User {
+    //TODO не надо arraylist
     private ArrayList<AnyUser> anyUserList;
     private  File fileUsers;
     public Administrator(String name, String surname, int age, TypesUsers viewUser) {
@@ -18,7 +19,7 @@ public class Administrator extends User {
     }
 
     /*добавление нового пользователя*/
-    public void AddNewUser() throws IOException {
+    public void addNewUser() throws IOException {
         AnyUser newAnyUser = new AnyUser();
         try (BufferedReader bufferedReader = new BufferedReader(
                 new InputStreamReader(System.in))) {
@@ -29,14 +30,15 @@ public class Administrator extends User {
             newAnyUser.setSurname(bufferedReader.readLine());
         }
 
+        // TODO-me для считывание целочисленных литерал
+        //todo считать строку и преобразовать в интежер
         try (DataInputStream viewUserStream = new DataInputStream(System.in) ) {
             System.out.println("Возраст:");
             newAnyUser.setAge(viewUserStream.readInt());
 
-            System.out.println("Вид пользователя: " + " \n " + "1 - Обычный пользователь" + " \n " +
-                                                     "2 - Администратор" + " \n " + "3 - Менеджер" );
-            //TODO-me
-            // преобразовать Int к Enum ??
+            System.out.println("Вид пользователя:\n 1 - Обычный пользователь\n 2 - Администратор\n 3 - Менеджер" );
+            //TODO-me преобразовать int к enum ???
+            // todo принимать TypesUser.method(int пришедший)
             //newUser.setViewUser(viewUserStream.readInt());
         }
     }
@@ -44,8 +46,7 @@ public class Administrator extends User {
     // TODO-me разделить добавление пользователей (пр. если простой юзер, то метод свой)
     // или внутри этого метода 3 ветки сделать
     private void writeNewAnyUserDB(User newUser) throws IOException {
-        //TODO-me
-        // лекция про приведение своих типов и проверка наследования
+        //TODO-me посмотреть лекцию про приведение пользовательских типов и instanceof
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileUsers))) {
             writer.write(/*newUser.getId* + '/' +*/ newUser.getName() + "/" + newUser.getSurname() + "/" +
                     newUser.getAge() + "/" + newUser.getViewUser());

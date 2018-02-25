@@ -2,16 +2,14 @@ package ru.pestovnikova.Lesson10;
 
 public class BankCard
 {
-    private int ID;
     private String name;
     private String surname;
     private long cardNumber;
-    private short codeCVV;
+    private int codeCVV;
     private float balance;
     // TODO-me добавить "до какой даты действительна"
 
-    public BankCard(int id, String name, String surname, long cardNumber, short codeCVV, float balance) {
-        this.ID = id;
+    public BankCard(String name, String surname, long cardNumber, int codeCVV, float balance) {
         this.name = name;
         this.surname = surname;
         this.cardNumber = cardNumber;
@@ -20,7 +18,6 @@ public class BankCard
     }
 
     public BankCard() {
-        this.ID = 0;
         this.name = "";
         this.surname = "";
         this.cardNumber = 0;
@@ -32,7 +29,7 @@ public class BankCard
         this.cardNumber = cardNumber;
     }
 
-    public void setCodeCVV(short codeCVV) {
+    public void setCodeCVV(int codeCVV) {
         this.codeCVV = codeCVV;
     }
 
@@ -54,20 +51,12 @@ public class BankCard
         return cardNumber;
     }
 
-    public short getCodeCVV() {
+    public int getCodeCVV() {
         return codeCVV;
     }
 
     public float getBalance() {
         return balance;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int id) {
-        this.ID = id;
     }
 
     @Override

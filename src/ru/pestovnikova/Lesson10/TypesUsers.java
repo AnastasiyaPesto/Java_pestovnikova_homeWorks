@@ -2,7 +2,7 @@ package ru.pestovnikova.Lesson10;
 
 public enum TypesUsers {
     NOSET(0),
-    ANYUSER(1),
+    ANY_USER(1),
     MANAGER(2),
     ADMIN(3);
 
@@ -13,6 +13,17 @@ public enum TypesUsers {
     }
 
     public int getUserID(){return this.userID;}
+
+    public static TypesUsers parseIntToTypeUser(int id){
+        if (id == 1) {
+            return TypesUsers.ANY_USER;
+        } else if (id == 2) {
+            return TypesUsers.MANAGER;
+        } else if (id == 3) {
+            return TypesUsers.ADMIN;
+        }
+        return TypesUsers.NOSET;
+    }
 }
 
 

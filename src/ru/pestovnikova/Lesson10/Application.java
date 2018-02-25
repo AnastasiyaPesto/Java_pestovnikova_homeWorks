@@ -15,12 +15,11 @@ public class Application {
         Scanner scanner = new Scanner(System.in);
         boolean flag = false;
         while (!flag) {
-            System.out.println("Кто вы?" + " \n " + "1 - Обычный пользователь" + " \n " +
-                    "2 - Администратор" + " \n " + "3 - Менеджер" );
+            System.out.println("Кто вы?\n 1 - Обычный пользователь\n 2 - Администратор\n 3 - Менеджер");
             int viewUser = scanner.nextInt();
             switch (viewUser) {
                 case 1:
-                    anyUser.setViewUser(TypesUsers.ANYUSER);
+                    anyUser.setViewUser(TypesUsers.ANY_USER);
                     flag = true;
                     break;
                 case 2:
@@ -36,5 +35,6 @@ public class Application {
                     break;
             }
         }
+        //TODO-me А есть ли логика в использовании ArrayList. Нужно выгружать и загружать из/в БД!
     }
 }

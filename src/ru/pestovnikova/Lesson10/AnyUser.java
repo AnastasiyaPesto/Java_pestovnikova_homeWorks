@@ -5,32 +5,27 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class AnyUser extends User {
-    private ArrayList<BankCard> bankCardsList;
-    private int ID;
-    private BankCard bankCard;
 
-    // TODO-me
-    // Это нормальный конструктор??????????
+    // todo
+    private ArrayList<BankCard> bankCardsList;
+    // сделать map вместо id (ключ - фамилия имя?)
+
     public AnyUser(String name, String surname, int age, TypesUsers viewUser) {
         super(name, surname, age, viewUser);
-        ID = new Random().nextInt();
-        bankCard = new BankCard();
-        bankCard.setID(ID);
     }
 
     public AnyUser() { super(); }
 
-    public int getID() {
-        return ID;
-    }
-
-    // TODO-me как обработать если bankCard == null ?
-    public void add(BankCard bankCard) throws IOException {
+    public void addNewBankCard(long cardNum, int cvv) {
+        BankCard bankCard = new BankCard(getName(), getSurname(), cardNum, cvv, 0);
         if (bankCardsList == null) {
             bankCardsList = new ArrayList<BankCard>();
         }
         bankCardsList.add(bankCard);
-        writeNewCardDB(bankCard);
+    }
+
+    public ArrayList<BankCard> getBankCardsList() {
+        return bankCardsList;
     }
 
     public void writeNewCardDB(BankCard bankCard) throws IOException {

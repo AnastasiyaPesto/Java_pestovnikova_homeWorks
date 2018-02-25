@@ -13,7 +13,7 @@ public class User {
         this.age = age;
         this.viewUser = viewUser;
     }
-    // TODO-me
+    // TODO-me access can be package-private у всех конструкторов
     // Access can be package-private ??????
     public User() {
         this.name = "";
@@ -43,7 +43,7 @@ public class User {
     }
 
     public void setAge(int age) {
-        // TODO-me
+        // TODO-me обработка возраста
         // как здесь обработать если возраст:
         // 1. до 18 (покупать нелья)?
         // 2. отрицательный? (кинуть исключение? или вывести сразу на консоль?)
