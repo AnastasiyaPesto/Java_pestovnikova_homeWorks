@@ -35,6 +35,5 @@ public class Application {
                     break;
             }
         }
-        //TODO-me А есть ли логика в использовании ArrayList. Нужно выгружать и загружать из/в БД!
     }
 }

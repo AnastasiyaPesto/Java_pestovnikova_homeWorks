@@ -5,9 +5,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Administrator extends User {
-    //TODO не надо arraylist
-    private ArrayList<AnyUser> anyUserList;
-    private  File fileUsers;
+    private File fileUsers;
     public Administrator(String name, String surname, int age, TypesUsers viewUser) {
         super(name, surname, age, viewUser);
         File fileUsers = new File("users.txt");
@@ -28,18 +26,14 @@ public class Administrator extends User {
 
             System.out.println("Фамилия нового пользователя:");
             newAnyUser.setSurname(bufferedReader.readLine());
-        }
 
-        // TODO-me для считывание целочисленных литерал
-        //todo считать строку и преобразовать в интежер
-        try (DataInputStream viewUserStream = new DataInputStream(System.in) ) {
-            System.out.println("Возраст:");
-            newAnyUser.setAge(viewUserStream.readInt());
+            System.out.println("Возраст");
+            String age = bufferedReader.readLine();
+            newAnyUser.setAge(Integer.parseInt(age));
 
             System.out.println("Вид пользователя:\n 1 - Обычный пользователь\n 2 - Администратор\n 3 - Менеджер" );
-            //TODO-me преобразовать int к enum ???
-            // todo принимать TypesUser.method(int пришедший)
-            //newUser.setViewUser(viewUserStream.readInt());
+            String typeUser = bufferedReader.readLine();
+            newAnyUser.setViewUser(TypesUsers.parseIntToTypeUser(Integer.parseInt(typeUser)));
         }
     }
 

@@ -19,7 +19,7 @@ public class example {
 
         // Вариант записи через JsonWriterAnyUser
 //        JsonWriterAnyUser.writeJsonAnyUser(fileAnyUser, anyUser);
-        anyUser.writeAnyUserToTXT(fileAnyUser);
+        anyUser.writeAnyUserToFile(fileAnyUser);
 
         // Вариант записи через ConverterAnyUserToJson
 //        GsonBuilder builder = new GsonBuilder();
