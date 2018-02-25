@@ -18,7 +18,8 @@ public class example {
         File fileAnyUser = new File(anyUser.getName() + anyUser.getSurname() + ".txt");
 
         // Вариант записи через JsonWriterAnyUser
-        JsonWriterAnyUser.writeJsonAnyUser(fileAnyUser, anyUser);
+//        JsonWriterAnyUser.writeJsonAnyUser(fileAnyUser, anyUser);
+        anyUser.writeAnyUserToTXT(fileAnyUser);
 
         // Вариант записи через ConverterAnyUserToJson
 //        GsonBuilder builder = new GsonBuilder();

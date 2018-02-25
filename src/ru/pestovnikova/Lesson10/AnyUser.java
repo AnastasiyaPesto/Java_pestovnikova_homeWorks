@@ -1,11 +1,14 @@
 package ru.pestovnikova.Lesson10;
 
+import com.google.gson.stream.JsonWriter;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class AnyUser extends User {
+import static ru.pestovnikova.Lesson10.gsonAnyUser.JsonWriterAnyUser.writeBankCard;
 
+public class AnyUser extends User {
     // todo
     private ArrayList<BankCard> bankCardsList;
     // сделать map вместо id (ключ - фамилия имя?)
@@ -29,12 +32,35 @@ public class AnyUser extends User {
     }
 
     public void writeNewCardDB(BankCard bankCard) throws IOException {
-        File fileBankCards = new File("BankCards" + getName() + getSurname() +  ".txt");
-        if (bankCard != null) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileBankCards))) {
-                writer.write(bankCard.getName() + "/" + bankCard.getSurname() + "/"
-                        + bankCard.getCardNumber() + "/" + bankCard.getCodeCVV());
-            }
+
+    }
+
+    public void writeAnyUserToTXT(File file) throws IOException {
+        try (JsonWriter writer = new JsonWriter(new BufferedWriter(new FileWriter(file)))){
+            writer.setIndent("   ");
+            writer.beginObject();
+            writer.name("Name").value(getName());
+            writer.name("Surname").value(getSurname());
+            writer.name("Age").value(getAge());
+            writeBankCardArray(writer);
+            writer.endObject();
         }
+    }
+
+    private void writeBankCardArray(JsonWriter writer) throws IOException {
+        writer.name("Bank cards");
+        writer.beginArray();
+        for (BankCard bankCardIter : bankCardsList) {
+            writeBankCard(writer, bankCardIter);
+        }
+        writer.endArray();
+    }
+
+    private void writeBankCard (JsonWriter writer, BankCard bankCard) throws IOException {
+        writer.beginObject();
+        writer.name("Card number").value(bankCard.getCardNumber());
+        writer.name("CVV").value(bankCard.getCodeCVV());
+        writer.name("Balance").value(bankCard.getBalance());
+        writer.endObject();
     }
 }
