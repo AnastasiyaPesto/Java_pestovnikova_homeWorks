@@ -1,5 +1,6 @@
 package ru.pestovnikova.Lesson10;
 
+import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 import java.io.*;
@@ -78,5 +79,56 @@ public class AnyUser extends User {
         writer.name("CVV").value(bankCard.getCodeCVV());
         writer.name("Balance").value(bankCard.getBalance());
         writer.endObject();
+    }
+
+    public void readAnyUserFromFile(File file) throws IOException {
+        try (JsonReader reader = new JsonReader(new BufferedReader(new FileReader(file)))){
+            reader.beginObject();
+            while (reader.hasNext()){
+                String name = reader.nextName();
+                if (name.equals("Name")) {
+                    setName(reader.nextString());
+                } else if (name.equals("Surname")) {
+                    setSurname(reader.nextString());
+                } else if (name.equals("Age")) {
+                    setAge(reader.nextInt());
+                } else if (name.equals("Bank cards")) {
+                    readBankCardArray(reader);
+                } else {
+                    reader.skipValue();
+                }
+            }
+            reader.endObject();
+        }
+    }
+
+    private void readBankCardArray(JsonReader reader) throws IOException {
+        if (bankCardsList == null){
+            bankCardsList = new ArrayList<BankCard>();
+        }
+        reader.beginArray();
+        while (reader.hasNext()) {
+            bankCardsList.add(readBankCard(reader));
+        }
+        reader.endArray();
+    }
+
+    private BankCard readBankCard (JsonReader reader) throws IOException {
+        reader.beginObject();
+        BankCard bankCard = new BankCard();
+        while (reader.hasNext()) {
+            String name =   reader.nextName();
+            if (name.equals("Card number")) {
+                bankCard.setCardNumber(reader.nextLong());
+            } else if (name.equals("CVV")) {
+                bankCard.setCodeCVV(reader.nextInt());
+            } else if (name.equals("Balance")) {
+                bankCard.setBalance((float) reader.nextDouble());
+            } else {
+                reader.skipValue();
+            }
+        }
+        reader.endObject();
+        return bankCard;
     }
 }

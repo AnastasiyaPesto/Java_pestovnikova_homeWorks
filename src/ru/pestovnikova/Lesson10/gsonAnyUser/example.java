@@ -12,14 +12,17 @@ import java.io.*;
 
 public class example {
     public static void main(String[] args) throws IOException {
-        AnyUser anyUser = new AnyUser("Ivan", "Zentsov", 27, TypesUsers.ANY_USER);
-        anyUser.addNewBankCard(11112222, 123);
-        anyUser.addNewBankCard(798566253, 553);
-        File fileAnyUser = new File(anyUser.getName() + anyUser.getSurname() + ".txt");
+        AnyUser anyUserWrite = new AnyUser("Ivan", "Zentsov", 27, TypesUsers.ANY_USER);
+        anyUserWrite.addNewBankCard(11112222, 123);
+        anyUserWrite.addNewBankCard(798566253, 553);
+        File fileAnyUser = new File(anyUserWrite.getName() + anyUserWrite.getSurname() + ".txt");
 
         // Вариант записи через JsonWriterAnyUser
 //        JsonWriterAnyUser.writeJsonAnyUser(fileAnyUser, anyUser);
-        anyUser.writeAnyUserToFile(fileAnyUser);
+        anyUserWrite.writeAnyUserToFile(fileAnyUser);
+
+        AnyUser anyUserRead = new AnyUser();
+        anyUserRead.readAnyUserFromFile(fileAnyUser);
 
         // Вариант записи через ConverterAnyUserToJson
 //        GsonBuilder builder = new GsonBuilder();
